@@ -41,8 +41,15 @@
 ###代码
 
 
-'
+```C
 
  //这是最简单的代码
+ #include<stdio.h>
 
-'
+  int main()
+  {
+    printf("hello world!\n");
+    return 1;
+
+
+```
