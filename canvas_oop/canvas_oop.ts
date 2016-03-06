@@ -86,6 +86,20 @@ class TextField2 extends DisplayObject {
     }
 }
 
+class TextField3 extends DisplayObject {
+
+      st = ' ';
+      
+    render(context: CanvasRenderingContext2D) {
+        
+ 
+        context.font =  "20px Arial";
+        context.fillStyle = '#000000';
+    
+        context.fillText(this.st, 0, 100);
+    }
+}
+
 function drawQueue(queue) {
     for (var i = 0; i < renderQueue.length; i++) {
         var displayObject: DisplayObject = renderQueue[i];
@@ -122,18 +136,18 @@ var canvas: HTMLCanvasElement = document.getElementById("game") as HTMLCanvasEle
 var context = canvas.getContext("2d");
 
 var rect = new Rect();
-rect.width = 500;
-rect.height = 500;
-rect.color = '#000000'
-
+rect.width = 230;
+rect.height = 30;
+rect.x = 400;
+rect.y = 350;
+rect.color = '#FFFFFF'
 
 var rect2 = new Rect();
-rect2.width = 300;
-rect2.height = 50;
-rect2.x = 200;
-rect2.y = 200;
-rect2.rotation = Math.PI / 8;
-rect2.color = '#00FFFF'
+rect2.width = 230;
+rect2.height = 30;
+rect2.x = 400;
+rect2.y = 420;
+rect2.color = '#FFFFFF'
 
 var text = new TextField();
 text.st = '人生';
@@ -149,8 +163,34 @@ text2.y=170;
 var bitmap = new Bitmap();
 bitmap.source = 'beijing.jpg';
 
+var rect3 = new Rect();
+rect3.width = 100;
+rect3.height = 50;
+rect3.x = 460;
+rect3.y = 500;
+rect3.color = '#a8d6e6'
+
+
+var text3 = new TextField3();
+text3.st = '用户名:';
+text3.x = 410;
+text3.y = 270;
+
+
+var text4 = new TextField3();
+text4.st = '密码:';
+text4.x = 410;
+text4.y = 340;
+
+var text5 = new TextField3();
+text5.st = '登录';
+text5.x = 485;
+text5.y = 435;
+
+//var bitmap2 = new Bitmap();
+//bitmap2.source = 'rensheng.jpg';
 //渲染队列
-var renderQueue = [rect, rect2, bitmap,text,text2];
+var renderQueue = [ bitmap,text,text2,rect,rect2,rect3,text3,text4,text5,bitmap2];
 //资源加载列表
 var imageList = ['beijing.jpg'];
 
