@@ -1,0 +1,3 @@
+#游戏截图
+***
+![](http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%B0%8F%E6%B8%B8%E6%88%8F%E7%95%8C%E9%9D%A2&step_word=&pn=9&spn=0&di=41956354770&pi=&rn=1&tn=baiduimagedetail&is=&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=-1&cs=638521831%2C4200549145&os=803753113%2C73467455&simid=3433573218%2C483404571&adpicid=0&ln=1996&fr=&fmq=1457263537987_R&ic=undefined&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&ist=&jit=&cg=&bdtype=0&objurl=http%3A%2F%2Fa1.att.hudong.com%2F25%2F20%2F01300000022805124543202686223.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fp7rtwg_z%26e3Bi715g2_z%26e3Bv54AzdH3Fw8_dc_da_a8naaaaaaddbac8d9c9ndadmbmddn_3r2_z%26e3Bip4s%3Fr61%3Dzijg2ojgyj_sjup_gjt65g2_p7rtwg&gsm=0)
