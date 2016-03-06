@@ -59,13 +59,27 @@ var TextField = (function (_super) {
     __extends(TextField, _super);
     function TextField() {
         _super.apply(this, arguments);
+        this.st = ' ';
     }
     TextField.prototype.render = function (context) {
-        context.font = "20px Arial";
+        context.font = "100px Arial";
         context.fillStyle = '#000000';
-        context.fillText('游戏界面', 0, 20);
+        context.fillText(this.st, 0, 100);
     };
     return TextField;
+}(DisplayObject));
+var TextField2 = (function (_super) {
+    __extends(TextField2, _super);
+    function TextField2() {
+        _super.apply(this, arguments);
+        this.st = ' ';
+    }
+    TextField2.prototype.render = function (context) {
+        context.font = "60px Arial";
+        context.fillStyle = '#000000';
+        context.fillText(this.st, 0, 100);
+    };
+    return TextField2;
 }(DisplayObject));
 function drawQueue(queue) {
     for (var i = 0; i < renderQueue.length; i++) {
@@ -107,11 +121,17 @@ rect2.y = 200;
 rect2.rotation = Math.PI / 8;
 rect2.color = '#00FFFF';
 var text = new TextField();
-text.x = 10;
+text.st = '人生';
+text.x = 400;
+text.y = 100;
+var text2 = new TextField2();
+text2.st = 'Online';
+text2.x = 415;
+text2.y = 170;
 var bitmap = new Bitmap();
 bitmap.source = 'beijing.jpg';
 //渲染队列
-var renderQueue = [rect, rect2, text, bitmap];
+var renderQueue = [rect, rect2, bitmap, text, text2];
 //资源加载列表
 var imageList = ['beijing.jpg'];
 //先加载资源，加载成功之后执行渲染队列

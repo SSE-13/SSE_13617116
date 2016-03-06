@@ -60,10 +60,29 @@ class Rect extends DisplayObject {
 
 class TextField extends DisplayObject {
 
+      st = ' ';
+      
     render(context: CanvasRenderingContext2D) {
-        context.font = "20px Arial";
+        
+ 
+        context.font =  "100px Arial";
         context.fillStyle = '#000000';
-        context.fillText('游戏界面', 0, 20);
+    
+        context.fillText(this.st, 0, 100);
+    }
+}
+
+class TextField2 extends DisplayObject {
+
+      st = ' ';
+      
+    render(context: CanvasRenderingContext2D) {
+        
+ 
+        context.font =  "60px Arial";
+        context.fillStyle = '#000000';
+    
+        context.fillText(this.st, 0, 100);
     }
 }
 
@@ -102,7 +121,6 @@ function loadResource(imageList, callback) {
 var canvas: HTMLCanvasElement = document.getElementById("game") as HTMLCanvasElement;
 var context = canvas.getContext("2d");
 
-
 var rect = new Rect();
 rect.width = 500;
 rect.height = 500;
@@ -118,13 +136,21 @@ rect2.rotation = Math.PI / 8;
 rect2.color = '#00FFFF'
 
 var text = new TextField();
-text.x = 10;
+text.st = '人生';
+text.x = 400;
+text.y = 100;
+
+
+var text2 = new TextField2();
+text2.st = 'Online';
+text2.x=415;
+text2.y=170;
 
 var bitmap = new Bitmap();
 bitmap.source = 'beijing.jpg';
 
 //渲染队列
-var renderQueue = [rect, rect2, text,bitmap];
+var renderQueue = [rect, rect2, bitmap,text,text2];
 //资源加载列表
 var imageList = ['beijing.jpg'];
 
