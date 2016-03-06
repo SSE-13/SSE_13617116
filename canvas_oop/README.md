@@ -1,3 +1,3 @@
 #游戏截图
 ***
-![](http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E4%BA%BA%E7%94%9Fonline&step_word=&pn=15&spn=0&di=6638245790&pi=&rn=1&tn=baiduimagedetail&is=&istype=2&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=-1&cs=2760353095%2C2497481364&os=4283969730%2C1961132805&simid=4034372625%2C429648155&adpicid=0&ln=1980&fr=&fmq=1457264205484_R&ic=0&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&ist=&jit=&cg=&bdtype=0&objurl=http%3A%2F%2Fwenwen.soso.com%2Fp%2F20091116%2F20091116064649-150184535.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fojgojg_z%26e3Bf5f5_z%26e3Bv54AzdH3FzAzdH3Fq8mc099dl8_z%26e3Bip4&gsm=0)
+![](rensheng.jpg)
