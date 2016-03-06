@@ -63,7 +63,7 @@ var TextField = (function (_super) {
     TextField.prototype.render = function (context) {
         context.font = "20px Arial";
         context.fillStyle = '#000000';
-        context.fillText('HelloWorld', 0, 20);
+        context.fillText('游戏界面', 0, 20);
     };
     return TextField;
 }(DisplayObject));
@@ -96,9 +96,9 @@ function loadResource(imageList, callback) {
 var canvas = document.getElementById("game");
 var context = canvas.getContext("2d");
 var rect = new Rect();
-rect.width = 200;
-rect.height = 100;
-rect.color = '#00FF00';
+rect.width = 500;
+rect.height = 500;
+rect.color = '#000000';
 var rect2 = new Rect();
 rect2.width = 300;
 rect2.height = 50;
@@ -109,11 +109,11 @@ rect2.color = '#00FFFF';
 var text = new TextField();
 text.x = 10;
 var bitmap = new Bitmap();
-bitmap.source = 'wander-icon.jpg';
+bitmap.source = 'beijing.jpg';
 //渲染队列
 var renderQueue = [rect, rect2, text, bitmap];
 //资源加载列表
-var imageList = ['wander-icon.jpg'];
+var imageList = ['beijing.jpg'];
 //先加载资源，加载成功之后执行渲染队列
 loadResource(imageList, function () {
     drawQueue(renderQueue);
