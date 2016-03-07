@@ -62,7 +62,7 @@ var TextField = (function (_super) {
         this.st = ' ';
     }
     TextField.prototype.render = function (context) {
-        context.font = "100px Arial";
+        context.font = "25px Arial";
         context.fillStyle = '#000000';
         context.fillText(this.st, 0, 100);
     };
@@ -75,7 +75,7 @@ var TextField2 = (function (_super) {
         this.st = ' ';
     }
     TextField2.prototype.render = function (context) {
-        context.font = "60px Arial";
+        context.font = "20px Arial";
         context.fillStyle = '#000000';
         context.fillText(this.st, 0, 100);
     };
@@ -136,12 +136,12 @@ rect2.y = 420;
 rect2.color = '#FFFFFF';
 var text = new TextField();
 text.st = '人生';
-text.x = 400;
-text.y = 100;
+text.x = 10;
+text.y = -75;
 var text2 = new TextField2();
 text2.st = 'Online';
-text2.x = 415;
-text2.y = 170;
+text2.x = 10;
+text2.y = -55;
 var bitmap = new Bitmap();
 bitmap.source = 'beijing.jpg';
 var rect3 = new Rect();
@@ -173,13 +173,17 @@ bitmap2.source = 'renwu.png';
 bitmap2.x = -80;
 bitmap2.y = 200;
 var bitmap3 = new Bitmap();
-bitmap3.source = 'tubiao.png';
-bitmap3.x = 730;
-bitmap3.y = 0;
+bitmap3.source = 'fangzi.png';
+bitmap3.x = 650;
+bitmap3.y = 150;
+var bitmap4 = new Bitmap();
+bitmap4.source = 'tubiao.png';
+bitmap4.x = 370;
+bitmap4.y = 100;
 //渲染队列
-var renderQueue = [bitmap, text, text2, rect4, rect, rect2, rect3, text3, text4, text5, bitmap2, bitmap3];
+var renderQueue = [bitmap, text, text2, rect4, rect, rect2, rect3, text3, text4, text5, bitmap2, bitmap3, bitmap4];
 //资源加载列表
-var imageList = ['beijing.jpg', 'renwu.png', 'tubiao.png'];
+var imageList = ['beijing.jpg', 'renwu.png', 'fangzi.png', 'tubiao.png'];
 //先加载资源，加载成功之后执行渲染队列
 loadResource(imageList, function () {
     drawQueue(renderQueue);
