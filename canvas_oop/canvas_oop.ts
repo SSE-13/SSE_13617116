@@ -44,6 +44,8 @@ class Bitmap extends DisplayObject {
 
 }
 
+
+
 class Rect extends DisplayObject {
 
     width = 100
@@ -171,6 +173,13 @@ rect3.y = 500;
 rect3.color = '#a8d6e6'
 
 
+var rect4 = new Rect();
+rect4.width = 300;
+rect4.height = 230;
+rect4.x = 350;
+rect4.y = 300;
+rect4.color = '#ace37b';
+
 var text3 = new TextField3();
 text3.st = '用户名:';
 text3.x = 410;
@@ -188,9 +197,9 @@ text5.x = 485;
 text5.y = 435;
 
 //var bitmap2 = new Bitmap();
-//bitmap2.source = 'rensheng.jpg';
+//bitmap2.source = 'beijing1.jpg';
 //渲染队列
-var renderQueue = [ bitmap,text,text2,rect,rect2,rect3,text3,text4,text5,bitmap2];
+var renderQueue = [ bitmap,text,text2,rect4,rect,rect2,rect3,text3,text4,text5];
 //资源加载列表
 var imageList = ['beijing.jpg'];
 
