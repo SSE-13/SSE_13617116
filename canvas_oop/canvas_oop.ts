@@ -196,12 +196,19 @@ text5.st = '登录';
 text5.x = 485;
 text5.y = 435;
 
-//var bitmap2 = new Bitmap();
-//bitmap2.source = 'beijing1.jpg';
+var bitmap2 = new Bitmap();
+bitmap2.source = 'renwu.png';
+bitmap2.x = -80;
+bitmap2.y = 200;
+
+var bitmap3 = new Bitmap();
+bitmap3.source = 'tubiao.png';
+bitmap3.x = 730;
+bitmap3.y = 0;
 //渲染队列
-var renderQueue = [ bitmap,text,text2,rect4,rect,rect2,rect3,text3,text4,text5];
+var renderQueue = [ bitmap,text,text2,rect4,rect,rect2,rect3,text3,text4,text5,bitmap2,bitmap3];
 //资源加载列表
-var imageList = ['beijing.jpg'];
+var imageList = ['beijing.jpg','renwu.png','tubiao.png'];
 
 //先加载资源，加载成功之后执行渲染队列
 loadResource(imageList, function() {
