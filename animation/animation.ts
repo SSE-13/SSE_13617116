@@ -12,7 +12,6 @@ const BOUNDS_RIGHT = 400;
 const BOUNCE = 0.95;
 
 
-const zhuolu = false;
 /**
  * 计时器系统
  */
@@ -52,7 +51,7 @@ class Body {
     y = 0;
     width = 0;
     height = 0;
-
+    daodi = false;
     displayObject;
 
     constructor(displayObject: DisplayObject) {
@@ -60,13 +59,14 @@ class Body {
     }
 
     public onTicker(duringTime) {
+        if(!this.daodi){
         this.vy += duringTime * GRAVITY;
         this.x += duringTime * this.vx;
         this.y += duringTime * this.vy;
         
         
         if(this.vy==400){
-            this.zhuolu = true;
+            this.daodi = true;
         }
         //反弹
         if (this.y + this.height > BOUNDS_BOTTOM) {
@@ -84,10 +84,11 @@ class Body {
 
 
         //根据物体位置更新显示对象属性
+        
         var displayObject = this.displayObject;
         displayObject.x = this.x;
         displayObject.y = this.y;
-
+    }
     }
 }
 
