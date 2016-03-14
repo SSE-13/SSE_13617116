@@ -49,12 +49,12 @@ var Body = (function () {
             this.vy += duringTime * GRAVITY;
             this.x += duringTime * this.vx;
             this.y += duringTime * this.vy;
-            if (this.vy <= 0.5) {
-                this.daodi = true;
-            }
             //反弹
             if (this.y + this.height > BOUNDS_BOTTOM) {
                 this.vy = -BOUNCE * this.vy;
+                if (this.vy <= 0.5 && this.vy + duringTime * GRAVITY > 0) {
+                    this.daodi = true;
+                }
             }
             //TODO： 左右越界反弹
             if (this.x + this.width > BOUNDS_RIGHT) {
