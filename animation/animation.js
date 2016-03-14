@@ -52,6 +52,9 @@ var Body = (function () {
             this.vy = -BOUNCE * this.vy;
         }
         //TODO： 左右越界反弹
+        if (this.x + this.width > BOUNDS_RIGHT) {
+            this.vx = -BOUNCE * this.vx;
+        }
         //根据物体位置更新显示对象属性
         var displayObject = this.displayObject;
         displayObject.x = this.x;
@@ -62,7 +65,7 @@ var Body = (function () {
 var rect = new Rect();
 rect.width = 150;
 rect.height = 100;
-rect.color = '#FF0000';
+rect.color = '#009FF5';
 /**
  * 创建一个物体，其显示内容为一个长方形，受重力做平抛运动
  */
