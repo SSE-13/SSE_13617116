@@ -11,6 +11,8 @@ const BOUNDS_RIGHT = 400;
 
 const BOUNCE = 0.95;
 
+
+const zhuolu = false;
 /**
  * 计时器系统
  */
@@ -61,7 +63,11 @@ class Body {
         this.vy += duringTime * GRAVITY;
         this.x += duringTime * this.vx;
         this.y += duringTime * this.vy;
-
+        
+        
+        if(this.vy==400){
+            this.zhuolu = true;
+        }
         //反弹
         if (this.y + this.height > BOUNDS_BOTTOM) {
             this.vy = -BOUNCE * this.vy;

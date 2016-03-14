@@ -6,6 +6,7 @@ var BOUNDS_BOTTOM = 400;
 var BOUNDS_LEFT = 0;
 var BOUNDS_RIGHT = 400;
 var BOUNCE = 0.95;
+var zhuolu = false;
 /**
  * 计时器系统
  */
@@ -47,6 +48,9 @@ var Body = (function () {
         this.vy += duringTime * GRAVITY;
         this.x += duringTime * this.vx;
         this.y += duringTime * this.vy;
+        if (this.vy == 400) {
+            this.zhuolu = true;
+        }
         //反弹
         if (this.y + this.height > BOUNDS_BOTTOM) {
             this.vy = -BOUNCE * this.vy;
