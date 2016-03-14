@@ -59,7 +59,7 @@ class Body {
     }
 
     public onTicker(duringTime) {
-       // if(!this.daodi){
+        if(!this.daodi){
         this.vy += duringTime * GRAVITY;
         this.x += duringTime * this.vx;
         this.y += duringTime * this.vy;
@@ -91,7 +91,7 @@ class Body {
         displayObject.x = this.x;
         displayObject.y = this.y;
     
-   // }
+    }
 }
 
 
