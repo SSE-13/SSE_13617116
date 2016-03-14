@@ -49,19 +49,17 @@ var Body = (function () {
         this.x += duringTime * this.vx;
         if (!this.floor) {
             this.vy += duringTime * GRAVITY;
-            //this.x += duringTime * this.vx;
             this.y += duringTime * this.vy;
         }
         else {
             this.y = BOUNDS_BOTTOM - this.height;
-            //this.x +=duringTime * this.vx;
             this.vy = 0;
             this.vx -= FRICTION * this.vx;
         }
         //反弹
         if (this.y + this.height > BOUNDS_BOTTOM) {
             this.vy = -BOUNCE * this.vy;
-            if (this.vx < 0.5 && this.vy + duringTime * GRAVITY > 0) {
+            if (this.vx <= 0.5 && this.vy + duringTime * GRAVITY > 0) {
                 this.floor = true;
             }
         }
