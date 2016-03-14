@@ -6,6 +6,7 @@ var BOUNDS_BOTTOM = 400;
 var BOUNDS_LEFT = 0;
 var BOUNDS_RIGHT = 400;
 var BOUNCE = 0.95;
+var FRICTION = 1;
 /**
  * 计时器系统
  */
@@ -41,33 +42,33 @@ var Body = (function () {
         this.y = 0;
         this.width = 0;
         this.height = 0;
-        this.daodi = false;
+        this.floor = false;
         this.displayObject = displayObject;
     }
     Body.prototype.onTicker = function (duringTime) {
-        if (!this.daodi) {
+        if (!this.floor) {
             this.vy += duringTime * GRAVITY;
             this.x += duringTime * this.vx;
             this.y += duringTime * this.vy;
-            //反弹
-            if (this.y + this.height > BOUNDS_BOTTOM) {
-                this.vy = -BOUNCE * this.vy;
-                if (this.vy <= 0.5 && this.vy + duringTime * GRAVITY > 0) {
-                    this.daodi = true;
-                }
-            }
-            //TODO： 左右越界反弹
-            if (this.x + this.width > BOUNDS_RIGHT) {
-                this.vx = -BOUNCE * this.vx;
-            }
-            if (this.x < BOUNDS_LEFT) {
-                this.vx = -BOUNCE * this.vx;
-            }
-            //根据物体位置更新显示对象属性
-            var displayObject = this.displayObject;
-            displayObject.x = this.x;
-            displayObject.y = this.y;
         }
+        //反弹
+        if (this.y + this.height > BOUNDS_BOTTOM) {
+            this.vy = -BOUNCE * this.vy;
+            if (this.y >= 400 - this.vx && this.vy + duringTime * GRAVITY > 0) {
+                this.floor = true;
+            }
+        }
+        //TODO： 左右越界反弹
+        if (this.x + this.width > BOUNDS_RIGHT) {
+            this.vx = -BOUNCE * this.vx;
+        }
+        if (this.x < BOUNDS_LEFT) {
+            this.vx = -BOUNCE * this.vx;
+        }
+        //根据物体位置更新显示对象属性
+        var displayObject = this.displayObject;
+        displayObject.x = this.x;
+        displayObject.y = this.y;
     };
     return Body;
 }());

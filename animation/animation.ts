@@ -11,7 +11,7 @@ const BOUNDS_RIGHT = 400;
 
 const BOUNCE = 0.95;
 
-
+const FRICTION = 1;
 /**
  * 计时器系统
  */
@@ -51,7 +51,7 @@ class Body {
     y = 0;
     width = 0;
     height = 0;
-    daodi = false;
+    floor = false;
     displayObject;
 
     constructor(displayObject: DisplayObject) {
@@ -59,19 +59,21 @@ class Body {
     }
 
     public onTicker(duringTime) {
-        if(!this.daodi){
+        if(!this.floor){
         this.vy += duringTime * GRAVITY;
         this.x += duringTime * this.vx;
         this.y += duringTime * this.vy;
-        
         }
+        
+        
+        
         
 
         //反弹
         if (this.y + this.height > BOUNDS_BOTTOM) {
             this.vy = -BOUNCE * this.vy;
-        if(this.vy <= 0.5 && this.vy + duringTime * GRAVITY >0){
-            this.daodi = true;
+        if(this.y >= 400 -this.vx && this.vy + duringTime * GRAVITY >0){
+            this.floor = true;
         }
         }
 
@@ -92,6 +94,7 @@ class Body {
         displayObject.y = this.y;
     
     }
+    
 }
 
 
