@@ -6,7 +6,7 @@ var BOUNDS_BOTTOM = 400;
 var BOUNDS_LEFT = 0;
 var BOUNDS_RIGHT = 400;
 var BOUNCE = 0.95;
-var FRICTION = 1;
+var FRICTION = 0.3;
 /**
  * 计时器系统
  */
@@ -46,14 +46,15 @@ var Body = (function () {
         this.displayObject = displayObject;
     }
     Body.prototype.onTicker = function (duringTime) {
+        this.x += duringTime * this.vx;
         if (!this.floor) {
             this.vy += duringTime * GRAVITY;
-            this.x += duringTime * this.vx;
+            //this.x += duringTime * this.vx;
             this.y += duringTime * this.vy;
         }
         else {
-            this.y = 300;
-            this.x += duringTime * this.vx;
+            this.y = BOUNDS_BOTTOM - this.height;
+            //this.x +=duringTime * this.vx;
             this.vy = 0;
             this.vx -= FRICTION * this.vx;
         }
