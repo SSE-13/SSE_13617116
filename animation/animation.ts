@@ -64,6 +64,7 @@ class Body {
         this.x += duringTime * this.vx;
         this.y += duringTime * this.vy;
         
+        }
         
 
         //反弹
@@ -89,7 +90,7 @@ class Body {
         var displayObject = this.displayObject;
         displayObject.x = this.x;
         displayObject.y = this.y;
-    }
+    
     }
 }
 
