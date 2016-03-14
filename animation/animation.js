@@ -49,7 +49,7 @@ var Body = (function () {
             this.vy += duringTime * GRAVITY;
             this.x += duringTime * this.vx;
             this.y += duringTime * this.vy;
-            if (this.vy == 400) {
+            if (this.vy <= 0.5) {
                 this.daodi = true;
             }
             //反弹
