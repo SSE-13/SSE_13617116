@@ -65,6 +65,12 @@ class Body {
         this.y += duringTime * this.vy;
         }
         
+        else{
+            this.y = 300;
+            this.x +=duringTime * this.vx;
+            this.vy = 0;
+            this.vx -=FRICTION * this.vx; 
+        }
         
         
         
@@ -72,9 +78,9 @@ class Body {
         //反弹
         if (this.y + this.height > BOUNDS_BOTTOM) {
             this.vy = -BOUNCE * this.vy;
-        if(this.y >= 400 -this.vx && this.vy + duringTime * GRAVITY >0){
+        if(this.vx < 0.5&& this.vy + duringTime * GRAVITY >0){
             this.floor = true;
-        }
+          }
         }
 
         //TODO： 左右越界反弹
