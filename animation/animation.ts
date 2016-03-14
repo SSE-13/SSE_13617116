@@ -11,7 +11,7 @@ const BOUNDS_RIGHT = 400;
 
 const BOUNCE = 0.95;
 
-const FRICTION = 0.3;
+const FRICTION = 0.03;
 /**
  * 计时器系统
  */
@@ -108,7 +108,7 @@ class Body {
 var rect = new Rect();
 rect.width = 150;
 rect.height = 100;
-rect.color = '#009FF5';
+rect.color = '#a8d6e6';
 
 /**
  * 创建一个物体，其显示内容为一个长方形，受重力做平抛运动
