@@ -12,6 +12,8 @@ const BOUNDS_RIGHT = 400;
 const BOUNCE = 0.95;
 
 const FRICTION = 0.03;
+
+const MIN = 0.5;
 /**
  * 计时器系统
  */
@@ -80,7 +82,7 @@ class Body {
         //反弹
         if (this.y + this.height > BOUNDS_BOTTOM && this.vy >=0) {
             this.vy = -BOUNCE * this.vy;
-        if(Math.abs(this.vy) <= 0.5 && this.vy + duringTime * GRAVITY >0){
+        if(Math.abs(this.vy) <= MIN && this.vy + duringTime * GRAVITY >0){
             this.floor = true;
           }
         }
