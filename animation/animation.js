@@ -56,10 +56,13 @@ var Body = (function () {
             this.vy = 0;
             this.vx -= FRICTION * this.vx;
         }
+        if (this.y < 0) {
+            this.vy = -BOUNCE + this.vy;
+        }
         //反弹
-        if (this.y + this.height > BOUNDS_BOTTOM) {
+        if (this.y + this.height > BOUNDS_BOTTOM && this.vy >= 0) {
             this.vy = -BOUNCE * this.vy;
-            if (this.vx <= 0.5 && this.vy + duringTime * GRAVITY > 0) {
+            if (Math.abs(this.vy) <= 0.5 && this.vy + duringTime * GRAVITY > 0) {
                 this.floor = true;
             }
         }
@@ -87,8 +90,8 @@ rect.color = '#a8d6e6';
 var body = new Body(rect);
 body.width = rect.width;
 body.height = rect.height;
-body.vx = 5; //需要保证 vx 在 0-50的范围内行为正常
-body.vy = 0; //需要保证 vy 在 0-50的范围内行为正常
+body.vx = 50; //需要保证 vx 在 0-50的范围内行为正常
+body.vy = 10; //需要保证 vy 在 0-50的范围内行为正常
 var renderCore = new RenderCore();
 var ticker = new Ticker();
 renderCore.start([rect]);

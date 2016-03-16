@@ -72,13 +72,15 @@ class Body {
             this.vx -=FRICTION * this.vx; 
         }
         
-        
+       if(this.y < 0){
+            this.vy = -BOUNCE +this.vy;
+        }
         
 
         //反弹
-        if (this.y + this.height > BOUNDS_BOTTOM) {
+        if (this.y + this.height > BOUNDS_BOTTOM && this.vy >=0) {
             this.vy = -BOUNCE * this.vy;
-        if(this.vx <= 0.5 && this.vy + duringTime * GRAVITY >0){
+        if(Math.abs(this.vy) <= 0.5 && this.vy + duringTime * GRAVITY >0){
             this.floor = true;
           }
         }
