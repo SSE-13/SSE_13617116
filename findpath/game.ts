@@ -59,16 +59,22 @@ module game {
     }
 
     export class BoyBody extends Body {
-
+       public _Position = new Array(4);
        public _Step = 1;
-       public Path;
+       public Path : astar.AStar;
         public run(grid) {
+            for(var i =0; i< 4 ; i++){
+                this._Position[i] = new Array;
+            }
             grid.setStartNode(0, 0);
             grid.setEndNode(10, 8);
             var findpath = new astar.AStar();
             findpath.setHeurisitic(findpath.diagonal);
             var result = findpath.findPath(grid);
-            this.Path = findpath._path;
+            var Path = findpath._path;
+           /* for(var i = 0; i<this.Path._path.length;i++){
+                this._Position[0][i] = this.
+            }*/
         }
 
         public onTicker(duringTime) {
