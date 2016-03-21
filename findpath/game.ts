@@ -32,12 +32,17 @@ module game {
             context.beginPath();
             for (var i = 0; i < NUM_COLS; i++) {
                 for (var j = 0; j < NUM_ROWS; j++) {
-                    context.rect(i * GRID_PIXEL_WIDTH, j * GRID_PIXEL_HEIGHT, GRID_PIXEL_WIDTH, GRID_PIXEL_HEIGHT);
-                    context.fill();
-                    context.stroke();
+                    
+                    if(!this.grid.getNode(i,j).walkable){
+                        context.fillStyle = '#000000';
+                    }else{
+                        context.fillStyle = '#0000FF';
+                        context.fillRect(i * GRID_PIXEL_WIDTH, j * GRID_PIXEL_HEIGHT, GRID_PIXEL_WIDTH, GRID_PIXEL_HEIGHT);
+                        context.strokeRect(i * GRID_PIXEL_WIDTH, j * GRID_PIXEL_HEIGHT, GRID_PIXEL_WIDTH, GRID_PIXEL_HEIGHT);    
                 }
             }
             context.closePath();
+            }
 
         }
 
@@ -55,16 +60,15 @@ module game {
 
     export class BoyBody extends Body {
 
-
+       public _Step = 1;
+       public Path;
         public run(grid) {
             grid.setStartNode(0, 0);
             grid.setEndNode(10, 8);
             var findpath = new astar.AStar();
             findpath.setHeurisitic(findpath.diagonal);
             var result = findpath.findPath(grid);
-            var path = findpath._path;
-            console.log(path);
-            console.log(grid.toString());
+            this.Path = findpath._path;
         }
 
         public onTicker(duringTime) {
@@ -80,10 +84,12 @@ var boyShape = new game.BoyShape();
 var world = new game.WorldMap();
 var body = new game.BoyBody(boyShape);
 body.run(world.grid);
-
+body.vx = 10;
+body.vy = 20;
 
 var renderCore = new RenderCore();
 renderCore.start([world, boyShape]);
 
 var ticker = new Ticker();
+
 ticker.start([body]);
