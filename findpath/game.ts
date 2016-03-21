@@ -72,12 +72,16 @@ module game {
             findpath.setHeurisitic(findpath.diagonal);
             var result = findpath.findPath(grid);
             var Path = findpath._path;
-           /* for(var i = 0; i<this.Path._path.length;i++){
-                this._Position[0][i] = this.
-            }*/
+            for(var i = 0; i<this.Path._path.length;i++){
+                this._Position[0][i] = this.Path._path[i].x;
+                this._Position[1][i] = this.Path._path[i].y;
+                this._Position[2][i] = this._Position[0][i] - this._Position[0][i-1];
+                this._Position[3][i] = this._Position[1][i] - this._Position[1][i-1];
+            }
         }
 
         public onTicker(duringTime) {
+            if()
 
         }
     }
