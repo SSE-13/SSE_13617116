@@ -34,6 +34,7 @@ module game {
                 for (var j = 0; j < NUM_ROWS; j++) {
                     
                     if(!this.grid.getNode(i,j).walkable){
+         
                         context.fillStyle = '#000000';
                     }else{
                         context.fillStyle = '#0000FF';
@@ -59,47 +60,47 @@ module game {
     }
 
     export class BoyBody extends Body {
-       public _Position = new Array(4);
+       public _Position = new Array(2);
        public _Step = 1;
        public Path : astar.AStar;
         public run(grid) {
-            for(var i =0; i< 4 ; i++){
+            for(var i =0; i< 2 ; i++){
                 this._Position[i] = new Array;
             }
             grid.setStartNode(0, 0);
             grid.setEndNode(10, 8);
-            var findpath = new astar.AStar();
-            findpath.setHeurisitic(findpath.diagonal);
-            var result = findpath.findPath(grid);
-            var Path = findpath._path;
-            for(var i = 0; i<this.Path._path.length;i++){
-                this._Position[0][i] = this.Path._path[i].x;
-                this._Position[1][i] = this.Path._path[i].y;
-                this._Position[2][i] = this._Position[0][i] - this._Position[0][i-1];
-                this._Position[3][i] = this._Position[1][i] - this._Position[1][i-1];
+            this.Path = new astar.AStar();
+            this.Path.setHeurisitic(this.Path.diagonal);
+            var result = this.Path.findPath(grid);
+            var Path = this.Path._path;
+            for(var i = 1; i<this.Path._path.length;i++){
+                this._Position[0][i] = this.Path._path[i].x - this.Path._path[i-1].x;
+                this._Position[1][i] = this.Path._path[i].y - this.Path._path[i-1].y;
             }
         }
 
         public onTicker(duringTime) {
-            if()
-
+            if(this.x<NUM_ROWS *GRID_PIXEL_WIDTH &&this.y<NUM_COLS*GRID_PIXEL_HEIGHT){
+                if(this._Step <= this.Path._path.length){
+                    this.x += this._Position[0][this._Step]*GRID_PIXEL_WIDTH;
+                    this.y += this._Position[1][this._Step]*GRID_PIXEL_HEIGHT;
+                    this._Step++; 
+                }
+            }
         }
     }
 }
-
-
 
 
 var boyShape = new game.BoyShape();
 var world = new game.WorldMap();
 var body = new game.BoyBody(boyShape);
 body.run(world.grid);
-body.vx = 10;
-body.vy = 20;
 
 var renderCore = new RenderCore();
 renderCore.start([world, boyShape]);
 
 var ticker = new Ticker();
-
+body.vx = 10;
+body.vy = 20;
 ticker.start([body]);
