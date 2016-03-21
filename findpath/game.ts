@@ -33,8 +33,9 @@ module game {
             for (var i = 0; i < NUM_COLS; i++) {
                 for (var j = 0; j < NUM_ROWS; j++) {
                     
-                    if(!this.grid.getNode(i,j).walkable){
-         
+                    if(!this.grid.getNode(i,j).walkable){ 
+                        context.fillRect(i * GRID_PIXEL_WIDTH, (j-1) * GRID_PIXEL_HEIGHT, GRID_PIXEL_WIDTH, GRID_PIXEL_HEIGHT);
+                        context.fillRect(i * GRID_PIXEL_WIDTH, j * GRID_PIXEL_HEIGHT, GRID_PIXEL_WIDTH, GRID_PIXEL_HEIGHT);
                         context.fillStyle = '#000000';
                     }else{
                         context.fillStyle = '#0000FF';

@@ -53,7 +53,7 @@ var game;
         BoyShape.prototype.render = function (context) {
             context.beginPath();
             context.fillStyle = '#00FFFF';
-            context.arc(GRID_PIXEL_WIDTH / 2, GRID_PIXEL_HEIGHT / 2, Math.min(GRID_PIXEL_WIDTH, GRID_PIXEL_HEIGHT) / 2 - 5, 0, Math.PI * 2);
+            context.arc(GRID_PIXEL_WIDTH / 2, GRID_PIXEL_HEIGHT / 2, Math.min(GRID_PIXEL_WIDTH, GRID_PIXEL_HEIGHT) / 2 - 3, 0, Math.PI * 2);
             context.fill();
             context.closePath();
         };
