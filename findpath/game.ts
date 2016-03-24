@@ -82,16 +82,24 @@ module game {
         }
 
         public onTicker(duringTime) {
-            if(this.x<NUM_ROWS *GRID_PIXEL_WIDTH &&this.y<NUM_COLS*GRID_PIXEL_HEIGHT){
-                if(this._Step <= this.Path._path.length){
-                    this.x += this._Position[0][this._Step]*GRID_PIXEL_WIDTH;
-                    this.y += this._Position[1][this._Step]*GRID_PIXEL_HEIGHT;
-                    this._Step++; 
-                }
+            if(this._Step<this.Path._path.length-1){
+            var Tx = this.Path._path[this._Step].x*GRID_PIXEL_WIDTH;
+            var Ty = this.Path._path[this._Step].y*GRID_PIXEL_HEIGHT;
+            if(this.x<Tx)
+            {
+                this.x = (this.x+this.vx*duringTime>Tx)?Tx:(this.x+this.vx*duringTime);
+            }
+            if (this.y<Ty) {
+                this.y = (this.y+this.vx*duringTime>Ty)?Ty:(this.y+this.vx*duringTime);
+            }
+            if(this.x==Tx&&this.y==Ty){
+                this._Step++;
+            }
+            }
             }
         }
     }
-}
+
 
 
 var boyShape = new game.BoyShape();

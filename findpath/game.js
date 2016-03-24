@@ -53,7 +53,7 @@ var game;
         BoyShape.prototype.render = function (context) {
             context.beginPath();
             context.fillStyle = '#00FFFF';
-            context.arc(GRID_PIXEL_WIDTH / 2, GRID_PIXEL_HEIGHT / 2, Math.min(GRID_PIXEL_WIDTH, GRID_PIXEL_HEIGHT) / 2 - 3, 0, Math.PI * 2);
+            context.arc(GRID_PIXEL_WIDTH / 2, GRID_PIXEL_HEIGHT / 2, Math.min(GRID_PIXEL_WIDTH, GRID_PIXEL_HEIGHT) / 2 - 5, 0, Math.PI * 2);
             context.fill();
             context.closePath();
         };
@@ -83,10 +83,16 @@ var game;
             }
         };
         BoyBody.prototype.onTicker = function (duringTime) {
-            if (this.x < NUM_ROWS * GRID_PIXEL_WIDTH && this.y < NUM_COLS * GRID_PIXEL_HEIGHT) {
-                if (this._Step <= this.Path._path.length) {
-                    this.x += this._Position[0][this._Step] * GRID_PIXEL_WIDTH;
-                    this.y += this._Position[1][this._Step] * GRID_PIXEL_HEIGHT;
+            if (this._Step < this.Path._path.length - 1) {
+                var Tx = this.Path._path[this._Step].x * GRID_PIXEL_WIDTH;
+                var Ty = this.Path._path[this._Step].y * GRID_PIXEL_HEIGHT;
+                if (this.x < Tx) {
+                    this.x = (this.x + this.vx * duringTime > Tx) ? Tx : (this.x + this.vx * duringTime);
+                }
+                if (this.y < Ty) {
+                    this.y = (this.y + this.vx * duringTime > Ty) ? Ty : (this.y + this.vx * duringTime);
+                }
+                if (this.x == Tx && this.y == Ty) {
                     this._Step++;
                 }
             }
