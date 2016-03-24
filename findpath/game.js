@@ -64,23 +64,15 @@ var game;
         __extends(BoyBody, _super);
         function BoyBody() {
             _super.apply(this, arguments);
-            this._Position = new Array(2);
             this._Step = 1;
         }
         BoyBody.prototype.run = function (grid) {
-            for (var i = 0; i < 2; i++) {
-                this._Position[i] = new Array;
-            }
             grid.setStartNode(0, 0);
             grid.setEndNode(10, 8);
             this.Path = new astar.AStar();
             this.Path.setHeurisitic(this.Path.diagonal);
             var result = this.Path.findPath(grid);
             var Path = this.Path._path;
-            for (var i = 1; i < this.Path._path.length; i++) {
-                this._Position[0][i] = this.Path._path[i].x - this.Path._path[i - 1].x;
-                this._Position[1][i] = this.Path._path[i].y - this.Path._path[i - 1].y;
-            }
         };
         BoyBody.prototype.onTicker = function (duringTime) {
             if (this._Step < this.Path._path.length - 1) {

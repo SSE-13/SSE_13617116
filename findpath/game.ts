@@ -62,23 +62,16 @@ module game {
     }
 
     export class BoyBody extends Body {
-       public _Position = new Array(2);
+
        public _Step = 1;
        public Path : astar.AStar;
         public run(grid) {
-            for(var i =0; i< 2 ; i++){
-                this._Position[i] = new Array;
-            }
             grid.setStartNode(0, 0);
             grid.setEndNode(10, 8);
             this.Path = new astar.AStar();
             this.Path.setHeurisitic(this.Path.diagonal);
             var result = this.Path.findPath(grid);
             var Path = this.Path._path;
-            for(var i = 1; i<this.Path._path.length;i++){
-                this._Position[0][i] = this.Path._path[i].x - this.Path._path[i-1].x;
-                this._Position[1][i] = this.Path._path[i].y - this.Path._path[i-1].y;
-            }
         }
 
         public onTicker(duringTime) {
@@ -95,7 +88,13 @@ module game {
             if(this.x==Tx&&this.y==Ty){
                 this._Step++;
             }
-            }
+           /* if(this.x==Tx&&this.y!=Ty){ 
+                this.x = (this.x-this.vx*duringTime<Tx-GRID_PIXEL_WIDTH)?Tx-GRID_PIXEL_WIDTH:(this.x-this.vx*duringTime);
+              }
+              if(this.y==Ty&&this.x!=Tx){
+                   this.y = (this.y-this.vx*duringTime>Ty-GRID_PIXEL_HEIGHT)?Ty-GRID_PIXEL_HEIGHT:(this.y-this.vx*duringTime);
+              }*/
+             }
             }
         }
     }
