@@ -31,15 +31,17 @@ class HumanBody extends Body {
 
     onTicker(duringTime: number) {
 
-        // this.x = 
-        // this.y = 
-        // this.rotation =
+         this.x +=this.vx;
+         this.y = this.vy;
+         this.rotation += Math.PI/180;
 
     }
 }
 
 var ticker = new Ticker();
 var body = new HumanBody(humanContainer);
+body.vx = 3;
+body.y = 500;
 ticker.start([body]);
 
 
