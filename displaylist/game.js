@@ -32,7 +32,7 @@ var HumanBody = (function (_super) {
     HumanBody.prototype.onTicker = function (duringTime) {
         this.x += this.vx;
         this.y = this.vy;
-        this.rotation += Math.PI / 180;
+        this.rotation += (Math.PI / 180) * duringTime;
     };
     return HumanBody;
 }(Body));

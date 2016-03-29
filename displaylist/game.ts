@@ -33,7 +33,7 @@ class HumanBody extends Body {
 
          this.x +=this.vx;
          this.y = this.vy;
-         this.rotation += Math.PI/180;
+         this.rotation +=( Math.PI/180)*duringTime;
 
     }
 }
