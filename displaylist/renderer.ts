@@ -43,7 +43,7 @@ module render {
             else {
                 //TODO:
                 // GLOBAL_MATRIX = PARENT_GLOBAL_MATRIX * LOCAL_MATRIX
-                this.globalMatrix = localMatrix;
+                this.globalMatrix = Append(parent.globalMatrix,localMatrix);
             }
 
 
@@ -104,6 +104,17 @@ module render {
             }
         }
 
+    }
+    
+    function  Append(m:Matrix,n:Matrix):Matrix{
+        var matrix = new Matrix();
+        matrix.a = m.a*n.a +m.b*n.c;
+        matrix.b = m.a*n.b + m.b*m.d;
+        matrix.c = m.c*n.a + m.d*n.c;
+        matrix.d = m.c+n.b + m.d+n.d;
+        matrix.tx = m.tx*n.a + m.ty*n.c + n.tx;
+        matrix.ty = m.tx*n.b + m.ty*n.d + n.ty;
+       return matrix;
     }
 
     class Rect extends DisplayObject {
