@@ -1,5 +1,6 @@
 
 var humanContainer = new render.DisplayObjectContainer();
+var human = new render.DisplayObjectContainer();
 var head = new render.Bitmap();
 var trunk = new render.Bitmap();
 var left_arm = new render.Bitmap();
@@ -12,12 +13,15 @@ left_arm.source = "left_arm.png";
 right_arm.source = "right_arm.png";
 left_leg.source = "left_leg.png";
 right_leg.source  ="right_leg.png";
-humanContainer.addChild(head)
-humanContainer.addChild(trunk)
-humanContainer.addChild(left_arm)
-humanContainer.addChild(right_arm)
-humanContainer.addChild(left_leg)
-humanContainer.addChild(right_leg)
+
+humanContainer.addChild(human);
+
+human.addChild(head)
+human.addChild(trunk)
+human.addChild(left_arm)
+human.addChild(right_arm)
+human.addChild(left_leg)
+human.addChild(right_leg)
 var renderCore = new render.RenderCore();
 renderCore.start(humanContainer, ["head.png","trunk.png","left_arm.png","right_arm.png","left_leg.png","right_leg.png"]);
 
@@ -25,12 +29,13 @@ renderCore.start(humanContainer, ["head.png","trunk.png","left_arm.png","right_a
 class HumanBody extends Body {
 
   vx:number = 5;
+  vy:number  = 0;
 
     onTicker(duringTime: number) {
 
          this.x +=this.vx*duringTime;
-         //this.y = this.vy*duringTime;
-         this.rotation +=Math.PI*duringTime;
+         this.y = this.vy*duringTime;
+         this.rotation +=Math.PI/2*duringTime;
 
     }
 }
@@ -38,7 +43,7 @@ class HumanBody extends Body {
 var ticker = new Ticker();
 var body = new HumanBody(humanContainer);
 body.vx = 5;
-body.y = 100;
+body.y = 200
 ticker.start([body]);
 
 
