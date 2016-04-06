@@ -1,8 +1,3 @@
-module game {
-
-
-}
-
 
 var humanContainer = new render.DisplayObjectContainer();
 var head = new render.Bitmap();
@@ -29,11 +24,12 @@ renderCore.start(humanContainer, ["head.png","trunk.png","left_arm.png","right_a
 
 class HumanBody extends Body {
 
+  vx:number = 5;
 
     onTicker(duringTime: number) {
 
          this.x +=this.vx*duringTime;
-         this.y = this.vy*duringTime;
+         //this.y = this.vy*duringTime;
          this.rotation +=Math.PI*duringTime;
 
     }
@@ -41,8 +37,8 @@ class HumanBody extends Body {
 
 var ticker = new Ticker();
 var body = new HumanBody(humanContainer);
-body.scaleX = 3;
-body.y = 500;
+body.vx = 5;
+body.y = 100;
 ticker.start([body]);
 
 
