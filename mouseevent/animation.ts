@@ -40,6 +40,8 @@ class Body {
     scaleX = 1;
     scaleY = 1;
 
+    vx = 5;
+    vy = 0;
     displayObject;
 
     constructor(displayObject: render.DisplayObject) {
