@@ -61,7 +61,7 @@ ticker.start([body]);
 
 var eventCore = new events.EventCore();
 eventCore.init();
-//var HeadClicked  = false;
+
 var LegClicked = false;
 var headHitTest = (localPoint:math.Point,displayObject:render.DisplayObject) =>{
    // alert (`点击位置为${localPoint.x},${localPoint.y}`);
