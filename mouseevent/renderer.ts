@@ -18,7 +18,8 @@ module render {
         scaleX = 1;
         scaleY = 1;
         rotation = 0;
-
+        lx = 0;
+        ly = 0;
         /**
          * 全局矩阵
          */

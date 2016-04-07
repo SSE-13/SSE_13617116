@@ -15,6 +15,8 @@ left_leg.source = "left_leg.png";
 right_leg.source  ="right_leg.png";
 head.x =-180;
 head.y = -60;
+head.lx = 170;
+head.ly = 60;
 trunk.x = 0;
 trunk.y=150;
 left_arm.x = -20;
@@ -23,6 +25,8 @@ right_arm.x = 20;
 right_arm.y =160;
 left_leg.x = -45;
 left_leg.y =250;
+left_leg.lx = 100;
+left_leg.ly = 70;
 right_leg.x = 20;
 right_leg.y = 250;
 humanContainer.addChild(human);
@@ -66,7 +70,7 @@ var LegClicked = false;
 var headHitTest = (localPoint:math.Point,displayObject:render.DisplayObject) =>{
    // alert (`点击位置为${localPoint.x},${localPoint.y}`);
     console.log(localPoint);
-    if(localPoint.x > 170 &&  localPoint.x < 230 && localPoint.y > 60 && localPoint.y <= 150){
+    if(localPoint.x > displayObject.lx &&  localPoint.x < displayObject.lx+60 && localPoint.y > displayObject.ly && localPoint.y <= displayObject.ly+90){
         return true;
     }   
 
@@ -76,7 +80,7 @@ var headHitTest = (localPoint:math.Point,displayObject:render.DisplayObject) =>{
 
 var legHitTest = (localPoint:math.Point,displayObject:render.DisplayObject) =>{
     console.log(localPoint); 
-    if(localPoint.x >-30  && localPoint.x <=100  && localPoint.y >0 && localPoint.y <= 70){
+    if(localPoint.x >displayObject.lx-130  && localPoint.x <= displayObject.lx && localPoint.y >0 && localPoint.y <= displayObject.ly){
         return true;
     }   
     return false;
