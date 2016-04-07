@@ -61,47 +61,52 @@ ticker.start([body]);
 
 var eventCore = new events.EventCore();
 eventCore.init();
-var HeadClicked = false;
+//var HeadClicked  = false;
 var LegClicked = false;
 var headHitTest = (localPoint:math.Point,displayObject:render.DisplayObject) =>{
    // alert (`点击位置为${localPoint.x},${localPoint.y}`);
     console.log(localPoint);
-    if(localPoint.x > 0  && localPoint.x <= 78 && localPoint.y > 0 && localPoint.y <= 73){
-        HeadClicked =true;
+    if(localPoint.x > 170 &&  localPoint.x < 230 && localPoint.y > 60 && localPoint.y <= 150){
+        return true;
     }   
-    if(localPoint.x > 12  && localPoint.x <= 59 && localPoint.y > 132 && localPoint.y <= 189){
-        LegClicked =true;
-    }   
-    return true;
+
+    return false;
 }
 
-var headOnClick = () => {
-    if(HeadClicked)
-    {        
-        if(body.vx == 0)
-        {
-            body.vx = 5 * body.speed;
-            body.radius = Math.PI * body.speed;   
-            HeadClicked = false;     
-        }else{
-            body.vx *= -1;
+
+var legHitTest = (localPoint:math.Point,displayObject:render.DisplayObject) =>{
+    console.log(localPoint); 
+    if(localPoint.x >-30  && localPoint.x <=100  && localPoint.y >0 && localPoint.y <= 70){
+        return true;
+    }   
+    return false;
+}
+
+var headOnClick = () => {      
+   if(LegClicked)
+    {
+        body.vx = 5;
+        body.radius = Math.PI/2;
+        LegClicked = false;
+    }
+    else{
+             body.vx *= -1;
             body.radius *= -1;
             body.speed*= -1;
-            HeadClicked = false;
-        }
     }
-    if(LegClicked)
-    {
+}
+
+var legOnClick = () => {
         body.vx = 0;
         body.radius = 0;
         body.rotation = 0;
-        LegClicked = false;
-    }
-   
+        LegClicked = true;
+
 }
 
 eventCore.register(head,headHitTest,headOnClick);
-
+eventCore.register(left_leg,legHitTest,legOnClick);
+eventCore.register(right_leg,legHitTest,legOnClick);
 
 
 
