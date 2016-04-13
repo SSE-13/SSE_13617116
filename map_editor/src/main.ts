@@ -13,12 +13,13 @@ function readFile() {
 
 
 function  writeFile() {
+    
+    
     console.log(mapData);
     var map_path = __dirname + "/map.json"
     var json="{\"map\":"+JSON.stringify(mapData)+"}";
     console.log(json);
     fs.writeFileSync(map_path,json,"utf-8");
-    console.log("saved");
 }
 
 
@@ -55,9 +56,7 @@ function onTileClick(tile: editor.Tile) {
        mapData[tile.ownedRow][tile.ownedCol]=1;
    else
       mapData[tile.ownedRow][tile.ownedCol]=0;
-    
     tile.setWalkable(mapData[tile.ownedRow][tile.ownedCol]);
-    console.log(tile.ownedRow+" "+tile.ownedCol+" "+mapData[tile.ownedRow][tile.ownedCol]); 
    
 }
 

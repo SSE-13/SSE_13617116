@@ -13,7 +13,6 @@ function writeFile() {
     var json = "{\"map\":" + JSON.stringify(mapData) + "}";
     console.log(json);
     fs.writeFileSync(map_path, json, "utf-8");
-    console.log("saved");
 }
 function createMapEditor() {
     var world = new editor.WorldMap();
@@ -42,7 +41,6 @@ function onTileClick(tile) {
     else
         mapData[tile.ownedRow][tile.ownedCol] = 0;
     tile.setWalkable(mapData[tile.ownedRow][tile.ownedCol]);
-    console.log(tile.ownedRow + " " + tile.ownedCol + " " + mapData[tile.ownedRow][tile.ownedCol]);
 }
 var mapData = readFile();
 var renderCore = new render.RenderCore();
