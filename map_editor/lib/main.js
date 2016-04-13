@@ -2,6 +2,7 @@
 const fs = require('fs');
 var Cancel_length = 0;
 var Cancel = new Array(4);
+var new_Tile = new editor.Tile;
 for (var i = 0; i < 3; i++) {
     Cancel[i] = new Array();
 }
@@ -28,8 +29,8 @@ function CancelTile() {
         var new_col = Cancel[1][Cancel_length - 1];
         mapData[new_row][new_col] = Cancel[2][Cancel_length - 1];
         Cancel_length--;
+        new_Tile.setWalkable(mapData[new_row][new_col]);
     }
-    console.log("undone");
 }
 function createMapEditor() {
     var world = new editor.WorldMap();
@@ -89,6 +90,7 @@ function onTileClick(tile) {
     else
         mapData[tile.ownedRow][tile.ownedCol] = 0;
     tile.setWalkable(mapData[tile.ownedRow][tile.ownedCol]);
+    new_Tile = tile;
 }
 var mapData = readFile();
 var Container = new render.DisplayObjectContainer();

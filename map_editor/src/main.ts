@@ -3,6 +3,7 @@ import * as fs from 'fs';
 
 var Cancel_length =0;
 var Cancel = new Array(4);
+var new_Tile =  new editor.Tile;
 for(var i=0;i<3;i++)
 {
     Cancel[i] = new Array();
@@ -36,8 +37,8 @@ function CancelTile() {
         var new_col=Cancel[1][Cancel_length-1];
         mapData[new_row][new_col]= Cancel[2][Cancel_length-1];
         Cancel_length--;
-    }  
-    console.log("undone");
+        new_Tile.setWalkable(mapData[new_row][new_col]);
+   }
 }
 
 function createMapEditor() {
@@ -92,6 +93,7 @@ function onCannelClick() {
     CancelTile();
     console.log("Cannel");   
 }
+
 function onTileClick(tile: editor.Tile) {
     console.log(tile.ownedRow+" "+tile.ownedCol+" "+mapData[tile.ownedRow][tile.ownedCol]); 
      Cancel[0][Cancel_length] = tile.ownedRow;
@@ -103,6 +105,7 @@ function onTileClick(tile: editor.Tile) {
    else
       mapData[tile.ownedRow][tile.ownedCol]=0;
     tile.setWalkable(mapData[tile.ownedRow][tile.ownedCol]);
+    new_Tile = tile;
    
 }
 
