@@ -1,7 +1,12 @@
 
 import * as fs from 'fs';
 
-
+var Cancel_length =0;
+var Cancel = new Array(4);
+for(var i=0;i<3;i++)
+{
+    Cancel[i] = new Array();
+}
 
 function readFile() {
     var map_path = __dirname + "/map.json"
@@ -21,6 +26,19 @@ function  writeFile() {
     fs.writeFileSync(map_path,json,"utf-8");
 }
 
+function CancelTile() {
+    if(Cancel_length<=0){ 
+        alert("Ended");
+        return;
+    }
+    else{
+        var new_row=Cancel[0][Cancel_length-1];
+        var new_col=Cancel[1][Cancel_length-1];
+        mapData[new_row][new_col]= Cancel[2][Cancel_length-1];
+        Cancel_length--;
+    }  
+    console.log("undone");
+}
 
 function createMapEditor() {
     var world = new editor.WorldMap();
@@ -59,9 +77,27 @@ function onSaveClick() {
     console.log("Save");   
 }
 
+
+var button_Cannel=new render.Bitmap();
+button_Cannel.width = 50;
+button_Cannel.height = 50;
+button_Cannel.source="Cannel.png";
+button_Cannel.x =150;
+button_Cannel.y=200;
+var Cannel = (localPoint:math.Point,displayObject:render.DisplayObject) =>{
+    if(localPoint.x>=0&&localPoint.x<=button_Cannel.width&&localPoint.y>=0&&localPoint.y<=button_Cannel.height)
+    return true;
+}
+function onCannelClick() {
+    CancelTile();
+    console.log("Cannel");   
+}
 function onTileClick(tile: editor.Tile) {
     console.log(tile.ownedRow+" "+tile.ownedCol+" "+mapData[tile.ownedRow][tile.ownedCol]); 
-     
+     Cancel[0][Cancel_length] = tile.ownedRow;
+     Cancel[1][Cancel_length] = tile.ownedCol;
+     Cancel[2][Cancel_length] = mapData[tile.ownedRow][tile.ownedCol];
+     Cancel_length++;
    if( mapData[tile.ownedRow][tile.ownedCol]==0)
        mapData[tile.ownedRow][tile.ownedCol]=1;
    else
@@ -80,6 +116,8 @@ eventCore.init();
 
 var editor = createMapEditor();
 Container.addChild(button_Save);
+Container.addChild(button_Cannel);
 Container.addChild(editor);
-renderCore.start(Container,["Save.png"]);
+renderCore.start(Container,["Save.png","Cannel.png"]);
 eventCore.register(button_Save, Save, onSaveClick);
+eventCore.register(button_Cannel, Cannel, onCannelClick);
