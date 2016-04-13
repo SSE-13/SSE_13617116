@@ -18,7 +18,6 @@ function  writeFile() {
     console.log(mapData);
     var map_path = __dirname + "/map.json"
     var json="{\"map\":"+JSON.stringify(mapData)+"}";
-    console.log(json);
     fs.writeFileSync(map_path,json,"utf-8");
 }
 
@@ -56,7 +55,8 @@ var Save = (localPoint:math.Point,displayObject:render.DisplayObject) =>{
     return true;
 }
 function onSaveClick() {
-    writeFile();    
+    writeFile(); 
+    console.log("Save");   
 }
 
 function onTileClick(tile: editor.Tile) {
@@ -83,4 +83,3 @@ Container.addChild(button_Save);
 Container.addChild(editor);
 renderCore.start(Container,["Save.png"]);
 eventCore.register(button_Save, Save, onSaveClick);
-//renderCore.start(editor);

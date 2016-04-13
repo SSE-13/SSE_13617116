@@ -11,7 +11,6 @@ function writeFile() {
     console.log(mapData);
     var map_path = __dirname + "/map.json";
     var json = "{\"map\":" + JSON.stringify(mapData) + "}";
-    console.log(json);
     fs.writeFileSync(map_path, json, "utf-8");
 }
 function createMapEditor() {
@@ -45,6 +44,7 @@ var Save = (localPoint, displayObject) => {
 };
 function onSaveClick() {
     writeFile();
+    console.log("Save");
 }
 function onTileClick(tile) {
     console.log(tile.ownedRow + " " + tile.ownedCol + " " + mapData[tile.ownedRow][tile.ownedCol]);
@@ -64,4 +64,3 @@ Container.addChild(button_Save);
 Container.addChild(editor);
 renderCore.start(Container, ["Save.png"]);
 eventCore.register(button_Save, Save, onSaveClick);
-//renderCore.start(editor);
